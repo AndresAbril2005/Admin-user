@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Animales</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        #logout, #deleteAcc {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        .animal {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        
+        <div aria-orientation="horizontal">
+            <input type="button" value="Cerrar Sesion" id="logout">
+            <input type="button" value="Borrar Cuenta" id="deleteAcc">
+        </div>
+        <div>
+            <div id="confirmar_delete" style="display: none;">
+                <p>¿Está seguro de que desea eliminar su cuenta?</p>
+                <button id="bntBorrarCuenta">Sí, eliminar cuenta</button>
+                <button onclick="noBorrar()">Cancelar</button>
+            </div>
+        </div>
+    </header>
+    <main id="mainContent"></main>
+    <div class="container">
+        <div>
+          <label for="cedula">Cedula:</label>
+          <input type="text" id="cedula" disabled>
+        </div>
+        <div>
+          <label for="nombre">Nombre:</label>
+          <input type="text" id="nombre" disabled>
+        </div>
+        <div>
+          <label for="fechaNacimiento">Fecha de Nacimiento:</label>
+          <input type="date" id="fechaNacimiento" disabled>
+        </div>
+        <div>
+          <label for="direccion">Direccion:</label>
+          <input type="text" id="direccion" disabled>
+        </div>
+        <div>
+          <label for="telefono">Telefono:</label>
+          <input type="tel" id="telefono" disabled>
+        </div>
+      </div>
+      </div>
+      <div id="c-user"></div>
+
+    <div id="c"></div>
+
+    <script>
+
+        document.addEventListener('DOMContentLoaded', () => {
+            mostrarCatalogo();
+
+            const btnLogout = document.getElementById('logout');
+            btnLogout.addEventListener('click', () => {
+                window.location.href = '../index.html';
+            });
+        });
+
+        function noBorrar() {
+            document.getElementById("confirmar_delete").style.display = "none";
+        }
+
+        document.getElementById("deleteAcc").addEventListener("click", async function (event) {
+            document.getElementById("confirmar_delete").style.display = "block";
+        });
+    </script>
+    <script type="module" src="../controllers/global.js"></script>    
+    <script type="module" src="../controllers/pagina.js"></script>    
+</body>
+</html>
